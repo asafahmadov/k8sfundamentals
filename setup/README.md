@@ -84,7 +84,6 @@ Then execute the following command , Period of addition key.
 
 $ curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add
 $ sudo apt-get install -y kubelet kubeadm kubectl
-```
 $ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
