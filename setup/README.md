@@ -76,17 +76,14 @@ $ sudo apt-get install -y apt-transport-https ca-certificates curl
 $ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 $ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 $ sudo apt-get update
-$ sudo apt-get install -y kubelet kubeadm kubectl
-
-Open /etc/apt/sources.list   file , Add a row
-
-$ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
-Perform the installation again K8s The order of .
+$ sudo vi /etc/apt/sources.list  
+deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 
 If appear - The following signatures couldn't be verified because the public key is not available
 Then execute the following command , Period of addition key.
 
 $ curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add
+$ sudo apt-get install -y kubelet kubeadm kubectl
 ```
 $ sudo apt-mark hold kubelet kubeadm kubectl
 ```
