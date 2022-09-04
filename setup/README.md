@@ -76,35 +76,35 @@ $ sudo systemctl restart containerd
 ```
 $ sudo apt-get update
 $ sudo apt-get install -y apt-transport-https ca-certificates curl
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
-sudo vi /etc/apt/sources.list  
-deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
+$ sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+$ echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt-get update
+$ sudo vi /etc/apt/sources.list  
+$ deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
 
 If appear - The following signatures couldn't be verified because the public key is not available
 Then execute the following command , Period of addition key.
 
-curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+$ curl https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add
+$ sudo apt-get install -y kubelet kubeadm kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 
 **4:** kubernetes cluster kurulumu
 
 ```
-sudo kubeadm config images pull
+$ sudo kubeadm config images pull
 
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip> --control-plane-endpoint=<ip>
-```
-
-```
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+$ sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip> --control-plane-endpoint=<ip>
 ```
 
 ```
-kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
-kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+```
+$ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+$ kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 ```
