@@ -42,6 +42,8 @@ EOF
 ```
 $ sudo modprobe overlay
 $ sudo modprobe br_netfilter
+
+The Platform CLI checks whether the br_netfilter module is loaded and exits if it is not available. This module is required to enable transparent masquerading and to facilitate Virtual Extensible LAN (VxLAN) traffic for communication between Kubernetes pods across the cluster. 
 ```
 
 ```
